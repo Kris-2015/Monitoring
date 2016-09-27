@@ -68,7 +68,6 @@ class AuthController extends Controller
      */
     public function dologin(LoginRequest $request)
     {
-       
         // Get email and password
         $email = $request->all()['email'];
         $password = $request->all()['password'];
