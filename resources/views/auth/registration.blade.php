@@ -49,35 +49,42 @@
     @endif
 
 
-    {!! Form::open(array('url' => route('doregister'), 'method' => 'POST', 'id' => 'login')) !!}
+    {!! Form::open(array('url' => route('doregister'), 'method' => 'POST', 'id' => 'signup', 'data-toggle' => 'validator' )) !!}
 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group has-feedback">
-        {{ Form::text('name',null,array('class'=>'form-control', 'placeholder' => 'Full Name')) }}
+        {{ Form::text('name',null,array('class'=>'form-control', 'maxlength' => '30', 'placeholder' => 'Full Name', 'required')) }}
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
     </div>
 
     <div class="form-group has-feedback">
-        {{ Form::email('email', null, array('class' => 'form-control', 'id' => 'email', 'placeholder' => 'Email')) }}
+        {{ Form::email('email', null, array('class' => 'form-control', 'id' => 'email', 'data-error' => 'Email is mandatory',
+            'placeholder' => 'Email', 'required')) }}
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
     </div>
 
     <div class="form-group has-feedback">
-        {{ Form::password('password', array('class'=>'form-control', 'id' => 'Password', 'placeholder'=>'Password')) }}
+        {{ Form::password('password', array('class' => 'form-control', 'id' => 'Password', 'data-minlength' => '6', 
+            'data-error' => 'Password is mandatory', 'placeholder'=>'Password', 'required' )) }}
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
     </div>
 
     <div class="form-group has-feedback">
-        {{ Form::password('cpassword', array('class' => 'form-control', 'id' => 'cpassword', 'placeholder' => 'Confirm Password')) }}
+        {{ Form::password('cpassword', array('class' => 'form-control', 'id' => 'cpassword', 'data-match' => '#Password',
+            'data-match-error' => 'Password does not match', 'placeholder' => 'Confirm Password', 'required' )) }}
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
     </div>
 
     <div class="row">
         <div class="col-xs-8">
             <div class="checkbox icheck">
                 <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms</a>
+                    By clicking on Register, you agree with our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
                 </label>
             </div>
         </div>
@@ -109,6 +116,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="{{ url('js/icheck.min.js') }}"></script>
+<!-- Bootstrap Validator -->
+<script src="{{ url('js/validator.js') }}"></script>
 <script>
   $(function () {
     $('input').iCheck({

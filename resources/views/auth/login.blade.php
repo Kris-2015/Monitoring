@@ -50,15 +50,18 @@
     </div>
     @endif
 
-    {!! Form::open(array('url' => route('dologin'), 'method' => 'POST', 'class' => 'form-horizontal','id'=>'login')) !!}
+    {!! Form::open(array('url' => route('dologin'), 'role' => 'form', 'method' => 'POST', 'class' => 'form-horizontal','id' => 'login', 
+        'data-toggle' => 'validator' )) !!}
 
       <div class="form-group has-feedback">
-        <input type="email" name="email" class="form-control" placeholder="Email">
+        <input type="email" name="email" id="user-email" class="form-control" data-error="Give your email id" placeholder="Email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" id="user-password" class="form-control" data-error="Give your password" placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div class="help-block with-errors"></div>
       </div>
       <div class="row">
         <div class="col-xs-8">
@@ -100,6 +103,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="{{ url('js/icheck.min.js') }}"></script>
+<!-- Bootstrap Validator -->
+<script src="{{ url('js/validator.js') }}"></script>
+
 <script>
   $(function () {
     $('input').iCheck({
