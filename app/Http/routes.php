@@ -18,12 +18,14 @@ Route::get('/', function () {
 Route::get('signUp', 'AuthController@registration');
 Route::get('login', 'AuthController@login');
 Route::post('doregister', [
-	'as' => 'doregister', 
-	'uses' => 'AuthController@doRegister'
+    'as' => 'doregister', 
+    'uses' => 'AuthController@doRegister'
 ]);
+
 Route::post('dologin', [
-	'as' => 'dologin', 
-	'uses' => 'AuthController@dologin'
+    'as' => 'dologin', 
+    'uses' => 'AuthController@dologin'
 ]);
+
 Route::get('page', 'TemplateController@index');
 Route::get('sample', 'TemplateController@sample');
