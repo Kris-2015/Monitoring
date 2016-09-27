@@ -33,6 +33,23 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
+    <!-- Display Validation Errors -->
+    @include('common.errors')
+
+    <!-- Display Messages -->
+    @if(session('pass'))
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ session('pass') }}
+    </div>
+    @endif
+    @if( session('fail'))
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ session('fail') }}
+    </div>
+    @endif
+
     {!! Form::open(array('url' => route('dologin'), 'method' => 'POST', 'class' => 'form-horizontal','id'=>'login')) !!}
 
       <div class="form-group has-feedback">

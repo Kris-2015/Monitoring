@@ -26,16 +26,16 @@ class RegistrationRequest extends Request
         return [
             'name' => 'required|alpha',
             'email' => 'required|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6|max:15'
         ];
     }
 
     public function message()
     {
         return [
-            'name' => 'Full Name is required is required',
-            'email' => 'Email is mandatory',
-            'password' => 'The password is required'
+            'name.required' => 'Full Name is required is required',
+            'email.required' => 'Email is mandatory',
+            'password.required' => 'The password is required'
         ];
     }
 }

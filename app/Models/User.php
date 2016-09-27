@@ -10,43 +10,51 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     use Authenticatable, CanResetPassword;
-    use SoftDeletes;
 
     protected $table = 'users';
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    /*protected $fillable = [
+    protected $fillable = [
         'name', 'email', 'password',
-    ];*/
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    /*protected $hidden = [
-        'password', 'remember_token',
-    ];*/
+    protected $hidden = [
+        'password'
+    ];
 
+    /**
+     * Function for inserting user data
+     * 
+     * @param: users data
+     * @return: integer
+     */
     public static function insertUser($data)
     {   
         try
-        {
+        {   
+            // Instantiate the User class
             $user = new User();
 
+            // Insertion of data in users table
             $user->name = $data['name'];
             $user->email = $data['email'];
-            $user->password = $data['password'];
+            $user->password = bcrypt($data['password']);
             $success = $user->save();
 
+            // On success, return true
             if ( $success != 0)
             {
                 return 1;
@@ -56,7 +64,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
         catch ( \Exception $e)
         {
+            // Log error for failed transaction
             Log::error($e);
+
+            // Return false for failed operation
             return 0;
         }
     }

@@ -39,10 +39,12 @@
     <!-- Display Messages -->
     @if(session('message'))
     <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ session('message') }}
     </div>
     @endif
     @if( session('warning'))
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ session('warning') }}
     @endif
 
