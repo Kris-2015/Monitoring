@@ -42,8 +42,8 @@ Route::get('logout', [
 
 // Groupping the routes for restricted resources
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', 'TemplateController@home');
-    Route::get('profile', 'TemplateController@profile');
+    Route::get('home', 'TemplateController@home');  // Home page after login
+    Route::get('profile', 'TemplateController@profile'); // Profile of user
 });
 
 Route::get('page', 'TemplateController@index'); // Admin

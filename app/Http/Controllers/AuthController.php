@@ -15,6 +15,16 @@ use App\Http\Requests;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\LoginRequest;
 
+/**
+ * Manage registration and login requests
+ * @access public
+ * @package App\Http\Controllers
+ * @subpackage void
+ * @category void
+ * @author mfsi-krishnadev
+ * @link void
+ */
+
 class AuthController extends Controller
 {
     /**
@@ -23,7 +33,16 @@ class AuthController extends Controller
      * @param: Request
      * @return: view 
      */
-    public function registration(Request $request)
+    public function registration(Request $request)/**
+ * Manage the role, resource and permission
+ * @access public
+ * @package App\Http\Controllers
+ * @subpackage void
+ * @category void
+ * @author mfsi-krishnadev
+ * @link void
+ */
+
     {
         return view('auth/registration');
     }

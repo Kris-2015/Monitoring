@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+
+/**
+ * Manage request for Template View Page
+ * @access public
+ * @package App\Http\Controllers
+ * @subpackage void
+ * @category void
+ * @author mfsi-krishnadev
+ * @link void
+ */
 class TemplateController extends Controller
 {
    /**
