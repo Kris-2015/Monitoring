@@ -33,16 +33,7 @@ class AuthController extends Controller
      * @param: Request
      * @return: view 
      */
-    public function registration(Request $request)/**
- * Manage the role, resource and permission
- * @access public
- * @package App\Http\Controllers
- * @subpackage void
- * @category void
- * @author mfsi-krishnadev
- * @link void
- */
-
+    public function registration(Request $request)
     {
         return view('auth/registration');
     }
