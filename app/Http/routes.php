@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('adminlte/admin-template');
+    return view('auth/login');
 });
 
 Route::get('signUp', 'AuthController@registration');
@@ -26,6 +26,15 @@ Route::post('dologin', [
     'as' => 'dologin', 
     'uses' => 'AuthController@dologin'
 ]);
+Route::get('logout', [
+    'as' => 'logout',
+    'uses' => 'AuthController@logout'
+]);
 
-Route::get('page', 'TemplateController@index');
-Route::get('sample', 'TemplateController@sample');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('home', 'TemplateController@home');
+    Route::get('profile', 'TemplateController@profile');
+});
+
+Route::get('page', 'TemplateController@index'); // Admin
+Route::get('sample', 'TemplateController@sample'); // Super Admin 

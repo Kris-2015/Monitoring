@@ -75,10 +75,25 @@ class AuthController extends Controller
         // Authenticate the user 
         if ( Auth::attempt(['email' => $email, 'password' => $password]) )
         {
-            return redirect('login')->with('pass', 'Login Successful');
+            return redirect('home');
         }
 
         // Return user to login page on unsuccessful login with fail message
         return redirect('login')->with('fail', 'Invalid Login and Password');
+    }
+
+    /**
+     * Function to logout user
+     *
+     * @param: Request
+     * @return: view
+     */ 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        Session::flush();
+
+        // After successful logout, redirect user to login page
+        return redirect('login');
     }
 }

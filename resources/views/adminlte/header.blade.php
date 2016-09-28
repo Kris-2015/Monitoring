@@ -116,10 +116,7 @@
                       <!-- The user image in the menu -->
                       <li class="user-header">
                           <img src="{{ url('images/user2-160x160.jpg') }}" class="img-circle" alt="User Image" />
-                          <p>
-                              Alexander Pierce - Web Developer
-                              <small>Member since Nov. 2012</small>
-                          </p>
+                          <p> {{ Auth::user()->name }} </p>
                       </li>
                       <!-- Menu Body -->
                       <li class="user-body">
@@ -136,10 +133,10 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                           <div class="pull-left">
-                              <a href="#" class="btn btn-default btn-flat">Profile</a>
+                              <a href="{{ url('profile') }} " class="btn btn-default btn-flat">Profile</a>
                           </div>
                           <div class="pull-right">
-                              <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                              <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                           </div>
                       </li>
                   </ul>
