@@ -85,6 +85,72 @@ desired effect
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
+    <!-- Issue modal -->
+    <div id="makeIssue" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">CREATE ISSUE</h4>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(array('role' => 'form', 'class' => 'form-horizontal')) !!}
+                        
+                        <!-- Project Name -->
+                        <div class="form-group">
+                            {{ Form::label('project', 'Project', array('class' => 'control-label col-sm-3')) }}
+                            <div class="col-xs-6">
+                                {{ Form::text('project', 'Employement(EM)', array('class'=>'form-control','placeholder'=>'Project')) }}
+                            </div>
+                        </div>
+
+                        <!-- Issue Type -->
+                        <div class="form-group">
+                            {{ Form::label('issue', 'Issue Type', array('class' => 'control-label col-sm-3')) }}
+                            <div class="col-xs-6">
+                                {{ Form::select('issue', [
+                                    'S' => 'Select',
+                                    'T' => 'Task',
+                                    'B' => 'Bug',
+                                    'E' => 'Epic'
+                                    ], null, ['class' => 'form-control']) }}
+                            </div>
+                        </div>
+
+                        <!-- Summary of the Issue -->
+                        <div class="form-group">
+                            {{ Form::label('summary', 'Summary', array('class' => 'control-label col-sm-3')) }}
+                            <div class="col-xs-6">
+                                {{ Form::text('summary', null, array('class' => 'form-control', 'placeholder' => 'Summary')) }}
+                            </div>
+                        </div>
+
+                        <!-- Description of the Issue -->
+                        <div class="form-group">
+                            {{ Form::label('description', 'Description', array('class' => 'control-label col-sm-3')) }}
+                            <div class="col-xs-6">
+                                {{ Form::textarea('description') }}
+                            </div>
+                        </div>
+                        
+                        <!-- Send button to inform jira -->
+                        <div class="form-group">
+                            <div class="col-sm-offset-5 col-sm-6">
+                                <button type="button" class="btn btn-primary">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     @include('adminlte/footer')
 
@@ -98,6 +164,8 @@ desired effect
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ url('js/app.min.js') }}"></script>
+<!-- Report Bug -->
+<script src="{{ url('js/report-bug.js') }}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
