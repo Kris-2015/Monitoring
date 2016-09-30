@@ -11,6 +11,8 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use App\Models\User;
+use App\Models\RoleExe;
+use App\Models\PermissionExe;
 use App\Http\Requests;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\LoginRequest;
@@ -105,5 +107,69 @@ class AuthController extends Controller
 
         // After successful logout, redirect user to login page
         return redirect('login');
+    }
+
+    /**
+     * Function to create roles for user
+     *
+     * @param: Request
+     * @return: view
+    */
+    public function createRolesDashboard(Request $request)
+    {
+        return view('auth/role-dashboard');
+    }
+
+    /**
+     * Function to handle the post request to create role
+     *
+     * @param: Request
+     * @return: redirect
+     */
+    public function makeRole(Request $request)
+    {
+        $role = $request->all()['role'];
+        
+        // Creating new role
+        $create_role = RoleExe::createRole($role);
+
+        if ( $create_role )
+        {
+            return redirect('roles')->with('message', 'Role created successfully.');
+        }
+
+        return redirect('roles')->with('fail', ' Error occured while creating role.');
+    }
+
+    /**
+     * Function to create roles for user
+     *
+     * @param: Request
+     * @return: view
+     */
+    public function createPermissionsDashboard(Request $request)
+    {
+        return view('auth/permission');
+    }
+
+    /**
+     * Function to handle the post request to create permissions
+     *
+     * @param: Request
+     * @return: redirect
+     */
+    public function makePermission(Request $request)
+    {
+        $permission = $request->all()['permission'];
+        
+        // Creating new role
+        $create_permission = PermissionExe::createPermission($permission);
+
+        if ( $create_permission )
+        {
+            return redirect('permissions')->with('message', 'Permission created successfully.');
+        }
+
+        return redirect('permissions')->with('fail', ' Error occured while creating permission.');
     }
 }

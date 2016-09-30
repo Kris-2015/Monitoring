@@ -13,6 +13,14 @@
 
 // Default view of application
 Route::get('/', function () {
+    
+    // Return view to the logged in user
+    if ( Auth::check() )
+    {
+        return redirect('home');
+    }
+
+    // Show login screen to new user
     return view('auth/login');
 });
 
@@ -40,10 +48,24 @@ Route::get('logout', [
     'uses' => 'AuthController@logout'
 ]);
 
+// Post request action to create role
+Route::post('make_role', [
+    'as' => 'make_role',
+    'uses' => 'AuthController@makeRole'
+]);
+
+// Post request action to create role
+Route::post('make_permission', [
+    'as' => 'make_permission',
+    'uses' => 'AuthController@makePermission'
+]);
+
 // Groupping the routes for restricted resources
 Route::group(['middleware' => 'auth'], function () {
     Route::get('home', 'TemplateController@home');  // Home page after login
     Route::get('profile', 'TemplateController@profile'); // Profile of user
+    Route::get('roles', 'AuthController@createRolesDashboard'); // Create Roles for User
+    Route::get('permissions', 'AuthController@createPermissionsDashboard'); // Create Permission for particular roles
 });
 
 Route::get('page', 'TemplateController@index'); // Admin

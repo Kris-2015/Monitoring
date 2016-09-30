@@ -66,7 +66,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         catch ( \Exception $e)
         {
             // Log error for failed transaction
-            Log::error($e);
+            errorReporting($e);
 
             // Return false for failed operation
             return 0;

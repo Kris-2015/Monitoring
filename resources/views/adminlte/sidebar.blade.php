@@ -32,12 +32,13 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="active"><a href="#"><span>Link</span></a></li>
-            <li><a href="#"><span>Another Link</span></a></li>
+            <li><a href="#makeIssue" id="report_issue" data-toggle="modal"><span>Report Bug</span></a></li>
             <li class="treeview">
-                <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><span>Adminstrator</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Admin Panel</a></li>
+                    <li><a href="{{ url('roles') }}">Create Role</a></li>
+                    <li><a href="{{ url('permissions') }}">Create Permission</a></li>
                 </ul>
             </li>
             <li><a href="{{ url('page') }}">Page</a></li>
