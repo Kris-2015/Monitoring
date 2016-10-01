@@ -5,4 +5,5 @@ Homestead.yaml
 Homestead.json
 .env
 bower_components
+my_pr_key.pem
 /public/images
