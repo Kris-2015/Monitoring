@@ -70,3 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('page', 'TemplateController@index'); // Admin
 Route::get('sample', 'TemplateController@sample'); // Super Admin 
+
+Route::get('oauth', 'JiraController@configureClient');
+
+Route::get('authorize', 'JiraController@authorizeData');

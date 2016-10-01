@@ -31,7 +31,7 @@
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><span>Link</span></a></li>
+            <li class="active"><a href="{{ url('oauth') }}"><span>JIRA</span></a></li>
             <li><a href="#makeIssue" id="report_issue" data-toggle="modal"><span>Report Bug</span></a></li>
             <li class="treeview">
                 <a href="#"><span>Adminstrator</span> <i class="fa fa-angle-left pull-right"></i></a>
